@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>gvpy.maps API documentation</title>
+<meta name="description" content="Cartography." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gvpy.maps</code></h1>
+</header>
+<section id="section-intro">
+<p>Cartography.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&#34;&#34;&#34;Cartography.&#34;&#34;&#34;
+
+from pathlib import Path
+
+import numpy as np
+import matplotlib as mpl
+import scipy.ndimage as ndimage
+from matplotlib.colors import (
+    LightSource,
+    LinearSegmentedColormap,
+    ListedColormap,
+)
+
+try:
+    import cartopy.crs as ccrs
+    from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
+    import cartopy.geodesic as cgeo
+except ImportError:
+    _has_cartopy = False
+else:
+    _has_cartopy = True
+
+
+class HillShade:
+    def __init__(
+        self, topo, lon=None, lat=None, smoothtopo=5, shading_factor=0.2
+    ):
+        &#34;&#34;&#34;Generate parameters for hill shading for an elevation model.
+
+        Parameters
+        ----------
+        topo : array-like
+            Topography
+        lon : array-like, optional
+            Longitude.
+        lat : array-like, optional
+            Latitude
+        smoothtopo : float, optional
+            Smoothing factor for topography when calculating hillshading.
+            Defaults to 5.
+        shading_factor : float, optional
+            Factor for hill shading. Less hill shading for a smaller factor.
+            Defaults to 0.2.
+        
+        Attributes
+        ----------
+        smoothbtopo : array-like
+            Smooth topography.
+        smoothbumps : array-like
+            Hill shades, based on `matplotlib.colors.LightSource`.
+        kmap4 : matplotlib.colors.Colormap
+            Black colormap with alpha channels for plotting hill shading.
+        extent : `tuple`
+            Extent in lon and lat. Only if coordinates are provided. Helpful
+            for plotting.
+
+        Notes
+        -----
+        With inspiration from this notebook:\n
+        https://github.com/agile-geoscience/notebooks/blob/master/Colourmaps.ipynb
+
+        The hill shading can be added on top of the topography like this:
+        ```python
+        hs = HillShade(topo, lon, lat) 
+        ax.imshow(
+            hs.smoothbumps,
+            extent=hs.topo_extent,
+            cmap=hs.kmap4,
+            alpha=0.5,
+            zorder=10,
+        )
+        ```
+        See code in `HillShade.plot_topo` for details.
+        &#34;&#34;&#34;
+
+        self.topo = topo
+        if lon is not None and lat is not None:
+            self.lon = lon
+            self.lat = lat
+            self.topo_extent = (
+                self.lon.min(),
+                self.lon.max(),
+                self.lat.max(),
+                self.lat.min(),
+            )
+        self.kmap = self._make_colormap([(0, 0, 0)])
+        self.kmap4 = self._add_alpha(self.kmap)
+        self.smoothbtopo = self._smooth_topo(sigma=smoothtopo)
+        self.smoothbumps = self._generate_hill_shade(
+            self.smoothbtopo, root=shading_factor
+        )
+
+    def _make_colormap(self, seq):
+        &#34;&#34;&#34;
+        Converts a sequence of RGB tuples containing floats in the interval (0,1).
+        For some reason LinearSegmentedColormap cannot take an alpha channel,
+        even though matplotlib colourmaps have one.
+        &#34;&#34;&#34;
+        seq = [(None,) * 3, 0.0] + list(seq) + [1.0, (None,) * 3]
+        cdict = {&#34;red&#34;: [], &#34;green&#34;: [], &#34;blue&#34;: []}
+        for i, item in enumerate(seq):
+            if isinstance(item, float):
+                r1, g1, b1 = seq[i - 1]
+                r2, g2, b2 = seq[i + 1]
+                cdict[&#34;red&#34;].append([item, r1, r2])
+                cdict[&#34;green&#34;].append([item, g1, g2])
+                cdict[&#34;blue&#34;].append([item, b1, b2])
+        return LinearSegmentedColormap(&#34;CustomMap&#34;, cdict)
+
+    def _add_alpha(self, cmap, alpha=None):
+        &#34;&#34;&#34;
+        Adds an alpha channel (opacity) to a colourmap. Uses a ramp by default.
+        Pass an array of 256 values to use that. 0 = transparent; 1 = opaque.
+        &#34;&#34;&#34;
+        cmap4 = cmap(np.arange(cmap.N))
+        if alpha is None:
+            alpha = np.linspace(1, 0, cmap.N)
+        cmap4[:, -1] = alpha
+        return ListedColormap(cmap4)
+
+    def _smooth_topo(self, sigma=2):
+        &#34;&#34;&#34;
+        Smoothes topography using a gaussian filter in 2D.
+        &#34;&#34;&#34;
+        stopo = ndimage.gaussian_filter(
+            self.topo, sigma=(sigma, sigma), order=0
+        )
+        return stopo
+
+    def _generate_hill_shade(self, topo, root=1, azdeg=275, altdeg=145):
+        &#34;&#34;&#34;
+        Generate image with hill shading.
+        &#34;&#34;&#34;
+        ls = LightSource(azdeg=azdeg, altdeg=altdeg)
+        bumps = ls.hillshade(topo) ** root  # Taking a root backs it off a bit.
+        return bumps
+
+    def plot_topo(self, ax, cmap=&#34;Blues&#34;):
+        &#34;&#34;&#34;Plot topography with hill shading.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes
+            Axis instance for plotting.
+        cmap : str or matplotlib.colors.Colormap, optional
+            Colormap for plotting. Defaults to &#34;Blues&#34;.
+        &#34;&#34;&#34;
+        mindepth = np.min(self.topo)
+        maxdepth = np.max(self.topo)
+        h = ax.contourf(
+            self.lon,
+            self.lat,
+            self.topo,
+            np.arange(mindepth, maxdepth, 100),
+            cmap=cmap,
+            vmin=mindepth,
+            vmax=maxdepth + 500,
+            extend=&#34;both&#34;,
+            zorder=9,
+        )
+        for c in h.collections:
+            c.set_rasterized(True)
+            c.set_edgecolor(&#34;face&#34;)
+
+        ax.imshow(
+            self.smoothbumps,
+            extent=self.topo_extent,
+            cmap=self.kmap4,
+            alpha=0.5,
+            zorder=10,
+        )
+
+        # contour depth
+        h2 = ax.contour(
+            self.lon,
+            self.lat,
+            self.topo,
+            np.arange(mindepth, maxdepth, 500),
+            colors=&#34;0.1&#34;,
+            linewidths=0.25,
+            zorder=11,
+        )
+        for c in h2.collections:
+            c.set_rasterized(True)
+
+
+def cartopy_scale_bar(
+    ax,
+    location,
+    length,
+    metres_per_unit=1000,
+    unit_name=&#34;km&#34;,
+    tol=0.01,
+    angle=0,
+    color=&#34;black&#34;,
+    linewidth=3,
+    text_offset=0.005,
+    ha=&#34;center&#34;,
+    va=&#34;bottom&#34;,
+    plot_kwargs=None,
+    text_kwargs=None,
+    **kwargs,
+):
+    &#34;&#34;&#34;Scale bar for cartopy plots.
+    For angles between 0 and 90 the text and line may be plotted at
+    slightly different angles for unknown reasons. To work around this,
+    override the &#39;rotation&#39; keyword argument with text_kwargs.
+
+    Args:
+        ax:              CartoPy axes.
+        location:        Position of left-side of bar in axes coordinates.
+        length:          Geodesic length of the scale bar.
+        metres_per_unit: Number of metres in the given unit. Default: 1000
+        unit_name:       Name of the given unit. Default: &#39;km&#39;
+        tol:             Allowed relative error in length of bar. Default: 0.01
+        angle:           Anti-clockwise rotation of the bar.
+        color:           Color of the bar and text. Default: &#39;black&#39;
+        linewidth:       Same argument as for plot.
+        text_offset:     Perpendicular offset for text in axes coordinates.
+                         Default: 0.005
+        ha:              Horizontal alignment. Default: &#39;center&#39;
+        va:              Vertical alignment. Default: &#39;bottom&#39;
+        **plot_kwargs:   Keyword arguments for plot, overridden by **kwargs.
+        **text_kwargs:   Keyword arguments for text, overridden by **kwargs.
+        **kwargs:        Keyword arguments for both plot and text.
+
+    https://stackoverflow.com/questions/32333870/how-can-i-show-a-km-ruler-on-a-cartopy-matplotlib-plot/50674451#50674451
+    &#34;&#34;&#34;
+    if not _has_cartopy:
+        raise ImportError(&#34;Cartopy needs to be installed for this feature.&#34;)
+
+    # Setup kwargs, update plot_kwargs and text_kwargs.
+    if plot_kwargs is None:
+        plot_kwargs = {}
+    if text_kwargs is None:
+        text_kwargs = {}
+
+    plot_kwargs = {
+        &#34;linewidth&#34;: linewidth,
+        &#34;color&#34;: color,
+        **plot_kwargs,
+        **kwargs,
+    }
+    text_kwargs = {
+        &#34;ha&#34;: ha,
+        &#34;va&#34;: va,
+        &#34;rotation&#34;: angle,
+        &#34;color&#34;: color,
+        **text_kwargs,
+        **kwargs,
+    }
+
+    # Convert all units and types.
+    location = np.asarray(location)  # For vector addition.
+    length_metres = length * metres_per_unit
+    angle_rad = angle * np.pi / 180
+
+    # End-point of bar.
+    end = _point_along_line(
+        ax, location, length_metres, angle=angle_rad, tol=tol
+    )
+
+    # Coordinates are currently in axes coordinates, so use transAxes to
+    # put into data coordinates. *zip(a, b) produces a list of x-coords,
+    # then a list of y-coords.
+    h = ax.plot(*zip(location, end), transform=ax.transAxes, **plot_kwargs)
+
+    # Push text away from bar in the perpendicular direction.
+    midpoint = (location + end) / 2
+    offset = text_offset * np.array([-np.sin(angle_rad), np.cos(angle_rad)])
+    text_location = midpoint + offset
+
+    # &#39;rotation&#39; keyword argument is in text_kwargs.
+    ht = ax.text(
+        *text_location,
+        f&#34;{length} {unit_name}&#34;,
+        rotation_mode=&#34;anchor&#34;,
+        transform=ax.transAxes,
+        **text_kwargs,
+    )
+    return h, ht
+
+
+def _axes_to_lonlat(ax, coords):
+    &#34;&#34;&#34;(lon, lat) from axes coordinates.&#34;&#34;&#34;
+    display = ax.transAxes.transform(coords)
+    data = ax.transData.inverted().transform(display)
+    lonlat = ccrs.PlateCarree().transform_point(*data, ax.projection)
+
+    return lonlat
+
+
+def _upper_bound(start, direction, distance, dist_func):
+    &#34;&#34;&#34;A point farther than distance from start, in the given direction.
+
+    It doesn&#39;t matter which coordinate system start is given in, as long
+    as dist_func takes points in that coordinate system.
+
+    Args:
+        start:     Starting point for the line.
+        direction  Nonzero (2, 1)-shaped array, a direction vector.
+        distance:  Positive distance to go past.
+        dist_func: A two-argument function which returns distance.
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    &#34;&#34;&#34;
+    if distance &lt;= 0:
+        raise ValueError(f&#34;Minimum distance is not positive: {distance}&#34;)
+
+    if np.linalg.norm(direction) == 0:
+        raise ValueError(&#34;Direction vector must not be zero.&#34;)
+
+    # Exponential search until the distance between start and end is
+    # greater than the given limit.
+    length = 0.1
+    end = start + length * direction
+
+    while dist_func(start, end) &lt; distance:
+        length *= 2
+        end = start + length * direction
+
+    return end
+
+
+def _distance_along_line(start, end, distance, dist_func, tol):
+    &#34;&#34;&#34;Point at a distance from start on the segment  from start to end.
+
+    It doesn&#39;t matter which coordinate system start is given in, as long
+    as dist_func takes points in that coordinate system.
+
+    Args:
+        start:     Starting point for the line.
+        end:       Outer bound on point&#39;s location.
+        distance:  Positive distance to travel.
+        dist_func: Two-argument function which returns distance.
+        tol:       Relative error in distance to allow.
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    &#34;&#34;&#34;
+    initial_distance = dist_func(start, end)
+    if initial_distance &lt; distance:
+        raise ValueError(
+            f&#34;End is closer to start ({initial_distance}) than &#34;
+            f&#34;given distance ({distance}).&#34;
+        )
+
+    if tol &lt;= 0:
+        raise ValueError(f&#34;Tolerance is not positive: {tol}&#34;)
+
+    # Binary search for a point at the given distance.
+    left = start
+    right = end
+
+    while not np.isclose(dist_func(start, right), distance, rtol=tol):
+        midpoint = (left + right) / 2
+
+        # If midpoint is too close, search in second half.
+        if dist_func(start, midpoint) &lt; distance:
+            left = midpoint
+        # Otherwise the midpoint is too far, so search in first half.
+        else:
+            right = midpoint
+
+    return right
+
+
+def _point_along_line(ax, start, distance, angle=0, tol=0.01):
+    &#34;&#34;&#34;Point at a given distance from start at a given angle.
+
+    Args:
+        ax:       CartoPy axes.
+        start:    Starting point for the line in axes coordinates.
+        distance: Positive physical distance to travel.
+        angle:    Anti-clockwise angle for the bar, in radians. Default: 0
+        tol:      Relative error in distance to allow. Default: 0.01
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    &#34;&#34;&#34;
+    # Direction vector of the line in axes coordinates.
+    direction = np.array([np.cos(angle), np.sin(angle)])
+
+    geodesic = cgeo.Geodesic()
+
+    # Physical distance between points.
+    def dist_func(a_axes, b_axes):
+        a_phys = _axes_to_lonlat(ax, a_axes)
+        b_phys = _axes_to_lonlat(ax, b_axes)
+
+        # Geodesic().inverse returns a NumPy MemoryView like [[distance,
+        # start azimuth, end azimuth]].
+        return geodesic.inverse(a_phys, b_phys).base[0, 0]
+
+    end = _upper_bound(start, direction, distance, dist_func)
+
+    return _distance_along_line(start, end, distance, dist_func, tol)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gvpy.maps.cartopy_scale_bar"><code class="name flex">
+<span>def <span class="ident">cartopy_scale_bar</span></span>(<span>ax, location, length, metres_per_unit=1000, unit_name='km', tol=0.01, angle=0, color='black', linewidth=3, text_offset=0.005, ha='center', va='bottom', plot_kwargs=None, text_kwargs=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scale bar for cartopy plots.
+For angles between 0 and 90 the text and line may be plotted at
+slightly different angles for unknown reasons. To work around this,
+override the 'rotation' keyword argument with text_kwargs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ax</code></strong></dt>
+<dd>
+<pre><code>     CartoPy axes.
+</code></pre>
+</dd>
+<dt><strong><code>location</code></strong></dt>
+<dd>
+<p>Position of left-side of bar in axes coordinates.</p>
+</dd>
+<dt><strong><code>length</code></strong></dt>
+<dd>
+<pre><code> Geodesic length of the scale bar.
+</code></pre>
+</dd>
+<dt><strong><code>metres_per_unit</code></strong></dt>
+<dd>Number of metres in the given unit. Default: 1000</dd>
+<dt><strong><code>unit_name</code></strong></dt>
+<dd>
+<p>Name of the given unit. Default: 'km'</p>
+</dd>
+<dt><strong><code>tol</code></strong></dt>
+<dd>
+<pre><code>    Allowed relative error in length of bar. Default: 0.01
+</code></pre>
+</dd>
+<dt><strong><code>angle</code></strong></dt>
+<dd>
+<pre><code>  Anti-clockwise rotation of the bar.
+</code></pre>
+</dd>
+<dt><strong><code>color</code></strong></dt>
+<dd>
+<pre><code>  Color of the bar and text. Default: 'black'
+</code></pre>
+</dd>
+<dt><strong><code>linewidth</code></strong></dt>
+<dd>
+<p>Same argument as for plot.</p>
+</dd>
+<dt><strong><code>text_offset</code></strong></dt>
+<dd>
+<p>Perpendicular offset for text in axes coordinates.
+Default: 0.005</p>
+</dd>
+<dt><strong><code>ha</code></strong></dt>
+<dd>
+<pre><code>     Horizontal alignment. Default: 'center'
+</code></pre>
+</dd>
+<dt><strong><code>va</code></strong></dt>
+<dd>
+<pre><code>     Vertical alignment. Default: 'bottom'
+</code></pre>
+</dd>
+<dt><strong><code>**plot_kwargs</code></strong></dt>
+<dd>Keyword arguments for plot, overridden by **kwargs.</dd>
+<dt><strong><code>**text_kwargs</code></strong></dt>
+<dd>Keyword arguments for text, overridden by **kwargs.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>
+<p>Keyword arguments for both plot and text.</p>
+</dd>
+</dl>
+<p><a href="https://stackoverflow.com/questions/32333870/how-can-i-show-a-km-ruler-on-a-cartopy-matplotlib-plot/50674451#50674451">https://stackoverflow.com/questions/32333870/how-can-i-show-a-km-ruler-on-a-cartopy-matplotlib-plot/50674451#50674451</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cartopy_scale_bar(
+    ax,
+    location,
+    length,
+    metres_per_unit=1000,
+    unit_name=&#34;km&#34;,
+    tol=0.01,
+    angle=0,
+    color=&#34;black&#34;,
+    linewidth=3,
+    text_offset=0.005,
+    ha=&#34;center&#34;,
+    va=&#34;bottom&#34;,
+    plot_kwargs=None,
+    text_kwargs=None,
+    **kwargs,
+):
+    &#34;&#34;&#34;Scale bar for cartopy plots.
+    For angles between 0 and 90 the text and line may be plotted at
+    slightly different angles for unknown reasons. To work around this,
+    override the &#39;rotation&#39; keyword argument with text_kwargs.
+
+    Args:
+        ax:              CartoPy axes.
+        location:        Position of left-side of bar in axes coordinates.
+        length:          Geodesic length of the scale bar.
+        metres_per_unit: Number of metres in the given unit. Default: 1000
+        unit_name:       Name of the given unit. Default: &#39;km&#39;
+        tol:             Allowed relative error in length of bar. Default: 0.01
+        angle:           Anti-clockwise rotation of the bar.
+        color:           Color of the bar and text. Default: &#39;black&#39;
+        linewidth:       Same argument as for plot.
+        text_offset:     Perpendicular offset for text in axes coordinates.
+                         Default: 0.005
+        ha:              Horizontal alignment. Default: &#39;center&#39;
+        va:              Vertical alignment. Default: &#39;bottom&#39;
+        **plot_kwargs:   Keyword arguments for plot, overridden by **kwargs.
+        **text_kwargs:   Keyword arguments for text, overridden by **kwargs.
+        **kwargs:        Keyword arguments for both plot and text.
+
+    https://stackoverflow.com/questions/32333870/how-can-i-show-a-km-ruler-on-a-cartopy-matplotlib-plot/50674451#50674451
+    &#34;&#34;&#34;
+    if not _has_cartopy:
+        raise ImportError(&#34;Cartopy needs to be installed for this feature.&#34;)
+
+    # Setup kwargs, update plot_kwargs and text_kwargs.
+    if plot_kwargs is None:
+        plot_kwargs = {}
+    if text_kwargs is None:
+        text_kwargs = {}
+
+    plot_kwargs = {
+        &#34;linewidth&#34;: linewidth,
+        &#34;color&#34;: color,
+        **plot_kwargs,
+        **kwargs,
+    }
+    text_kwargs = {
+        &#34;ha&#34;: ha,
+        &#34;va&#34;: va,
+        &#34;rotation&#34;: angle,
+        &#34;color&#34;: color,
+        **text_kwargs,
+        **kwargs,
+    }
+
+    # Convert all units and types.
+    location = np.asarray(location)  # For vector addition.
+    length_metres = length * metres_per_unit
+    angle_rad = angle * np.pi / 180
+
+    # End-point of bar.
+    end = _point_along_line(
+        ax, location, length_metres, angle=angle_rad, tol=tol
+    )
+
+    # Coordinates are currently in axes coordinates, so use transAxes to
+    # put into data coordinates. *zip(a, b) produces a list of x-coords,
+    # then a list of y-coords.
+    h = ax.plot(*zip(location, end), transform=ax.transAxes, **plot_kwargs)
+
+    # Push text away from bar in the perpendicular direction.
+    midpoint = (location + end) / 2
+    offset = text_offset * np.array([-np.sin(angle_rad), np.cos(angle_rad)])
+    text_location = midpoint + offset
+
+    # &#39;rotation&#39; keyword argument is in text_kwargs.
+    ht = ax.text(
+        *text_location,
+        f&#34;{length} {unit_name}&#34;,
+        rotation_mode=&#34;anchor&#34;,
+        transform=ax.transAxes,
+        **text_kwargs,
+    )
+    return h, ht</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gvpy.maps.HillShade"><code class="flex name class">
+<span>class <span class="ident">HillShade</span></span>
+<span>(</span><span>topo, lon=None, lat=None, smoothtopo=5, shading_factor=0.2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate parameters for hill shading for an elevation model.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>topo</code></strong> :&ensp;<code>array-like</code></dt>
+<dd>Topography</dd>
+<dt><strong><code>lon</code></strong> :&ensp;<code>array-like</code>, optional</dt>
+<dd>Longitude.</dd>
+<dt><strong><code>lat</code></strong> :&ensp;<code>array-like</code>, optional</dt>
+<dd>Latitude</dd>
+<dt><strong><code>smoothtopo</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Smoothing factor for topography when calculating hillshading.
+Defaults to 5.</dd>
+<dt><strong><code>shading_factor</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Factor for hill shading. Less hill shading for a smaller factor.
+Defaults to 0.2.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>smoothbtopo</code></strong> :&ensp;<code>array-like</code></dt>
+<dd>Smooth topography.</dd>
+<dt><strong><code>smoothbumps</code></strong> :&ensp;<code>array-like</code></dt>
+<dd>Hill shades, based on <code>matplotlib.colors.LightSource</code>.</dd>
+<dt><strong><code>kmap4</code></strong> :&ensp;<code>matplotlib.colors.Colormap</code></dt>
+<dd>Black colormap with alpha channels for plotting hill shading.</dd>
+<dt><strong><code>extent</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>Extent in lon and lat. Only if coordinates are provided. Helpful
+for plotting.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>With inspiration from this notebook:</p>
+<p><a href="https://github.com/agile-geoscience/notebooks/blob/master/Colourmaps.ipynb">https://github.com/agile-geoscience/notebooks/blob/master/Colourmaps.ipynb</a></p>
+<p>The hill shading can be added on top of the topography like this:</p>
+<pre><code class="language-python">hs = HillShade(topo, lon, lat) 
+ax.imshow(
+    hs.smoothbumps,
+    extent=hs.topo_extent,
+    cmap=hs.kmap4,
+    alpha=0.5,
+    zorder=10,
+)
+</code></pre>
+<p>See code in <code><a title="gvpy.maps.HillShade.plot_topo" href="#gvpy.maps.HillShade.plot_topo">HillShade.plot_topo()</a></code> for details.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HillShade:
+    def __init__(
+        self, topo, lon=None, lat=None, smoothtopo=5, shading_factor=0.2
+    ):
+        &#34;&#34;&#34;Generate parameters for hill shading for an elevation model.
+
+        Parameters
+        ----------
+        topo : array-like
+            Topography
+        lon : array-like, optional
+            Longitude.
+        lat : array-like, optional
+            Latitude
+        smoothtopo : float, optional
+            Smoothing factor for topography when calculating hillshading.
+            Defaults to 5.
+        shading_factor : float, optional
+            Factor for hill shading. Less hill shading for a smaller factor.
+            Defaults to 0.2.
+        
+        Attributes
+        ----------
+        smoothbtopo : array-like
+            Smooth topography.
+        smoothbumps : array-like
+            Hill shades, based on `matplotlib.colors.LightSource`.
+        kmap4 : matplotlib.colors.Colormap
+            Black colormap with alpha channels for plotting hill shading.
+        extent : `tuple`
+            Extent in lon and lat. Only if coordinates are provided. Helpful
+            for plotting.
+
+        Notes
+        -----
+        With inspiration from this notebook:\n
+        https://github.com/agile-geoscience/notebooks/blob/master/Colourmaps.ipynb
+
+        The hill shading can be added on top of the topography like this:
+        ```python
+        hs = HillShade(topo, lon, lat) 
+        ax.imshow(
+            hs.smoothbumps,
+            extent=hs.topo_extent,
+            cmap=hs.kmap4,
+            alpha=0.5,
+            zorder=10,
+        )
+        ```
+        See code in `HillShade.plot_topo` for details.
+        &#34;&#34;&#34;
+
+        self.topo = topo
+        if lon is not None and lat is not None:
+            self.lon = lon
+            self.lat = lat
+            self.topo_extent = (
+                self.lon.min(),
+                self.lon.max(),
+                self.lat.max(),
+                self.lat.min(),
+            )
+        self.kmap = self._make_colormap([(0, 0, 0)])
+        self.kmap4 = self._add_alpha(self.kmap)
+        self.smoothbtopo = self._smooth_topo(sigma=smoothtopo)
+        self.smoothbumps = self._generate_hill_shade(
+            self.smoothbtopo, root=shading_factor
+        )
+
+    def _make_colormap(self, seq):
+        &#34;&#34;&#34;
+        Converts a sequence of RGB tuples containing floats in the interval (0,1).
+        For some reason LinearSegmentedColormap cannot take an alpha channel,
+        even though matplotlib colourmaps have one.
+        &#34;&#34;&#34;
+        seq = [(None,) * 3, 0.0] + list(seq) + [1.0, (None,) * 3]
+        cdict = {&#34;red&#34;: [], &#34;green&#34;: [], &#34;blue&#34;: []}
+        for i, item in enumerate(seq):
+            if isinstance(item, float):
+                r1, g1, b1 = seq[i - 1]
+                r2, g2, b2 = seq[i + 1]
+                cdict[&#34;red&#34;].append([item, r1, r2])
+                cdict[&#34;green&#34;].append([item, g1, g2])
+                cdict[&#34;blue&#34;].append([item, b1, b2])
+        return LinearSegmentedColormap(&#34;CustomMap&#34;, cdict)
+
+    def _add_alpha(self, cmap, alpha=None):
+        &#34;&#34;&#34;
+        Adds an alpha channel (opacity) to a colourmap. Uses a ramp by default.
+        Pass an array of 256 values to use that. 0 = transparent; 1 = opaque.
+        &#34;&#34;&#34;
+        cmap4 = cmap(np.arange(cmap.N))
+        if alpha is None:
+            alpha = np.linspace(1, 0, cmap.N)
+        cmap4[:, -1] = alpha
+        return ListedColormap(cmap4)
+
+    def _smooth_topo(self, sigma=2):
+        &#34;&#34;&#34;
+        Smoothes topography using a gaussian filter in 2D.
+        &#34;&#34;&#34;
+        stopo = ndimage.gaussian_filter(
+            self.topo, sigma=(sigma, sigma), order=0
+        )
+        return stopo
+
+    def _generate_hill_shade(self, topo, root=1, azdeg=275, altdeg=145):
+        &#34;&#34;&#34;
+        Generate image with hill shading.
+        &#34;&#34;&#34;
+        ls = LightSource(azdeg=azdeg, altdeg=altdeg)
+        bumps = ls.hillshade(topo) ** root  # Taking a root backs it off a bit.
+        return bumps
+
+    def plot_topo(self, ax, cmap=&#34;Blues&#34;):
+        &#34;&#34;&#34;Plot topography with hill shading.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes
+            Axis instance for plotting.
+        cmap : str or matplotlib.colors.Colormap, optional
+            Colormap for plotting. Defaults to &#34;Blues&#34;.
+        &#34;&#34;&#34;
+        mindepth = np.min(self.topo)
+        maxdepth = np.max(self.topo)
+        h = ax.contourf(
+            self.lon,
+            self.lat,
+            self.topo,
+            np.arange(mindepth, maxdepth, 100),
+            cmap=cmap,
+            vmin=mindepth,
+            vmax=maxdepth + 500,
+            extend=&#34;both&#34;,
+            zorder=9,
+        )
+        for c in h.collections:
+            c.set_rasterized(True)
+            c.set_edgecolor(&#34;face&#34;)
+
+        ax.imshow(
+            self.smoothbumps,
+            extent=self.topo_extent,
+            cmap=self.kmap4,
+            alpha=0.5,
+            zorder=10,
+        )
+
+        # contour depth
+        h2 = ax.contour(
+            self.lon,
+            self.lat,
+            self.topo,
+            np.arange(mindepth, maxdepth, 500),
+            colors=&#34;0.1&#34;,
+            linewidths=0.25,
+            zorder=11,
+        )
+        for c in h2.collections:
+            c.set_rasterized(True)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="gvpy.maps.HillShade.plot_topo"><code class="name flex">
+<span>def <span class="ident">plot_topo</span></span>(<span>self, ax, cmap='Blues')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot topography with hill shading.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>ax</code></strong> :&ensp;<code>matplotlib.axes.Axes</code></dt>
+<dd>Axis instance for plotting.</dd>
+<dt><strong><code>cmap</code></strong> :&ensp;<code>str</code> or <code>matplotlib.colors.Colormap</code>, optional</dt>
+<dd>Colormap for plotting. Defaults to "Blues".</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_topo(self, ax, cmap=&#34;Blues&#34;):
+    &#34;&#34;&#34;Plot topography with hill shading.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        Axis instance for plotting.
+    cmap : str or matplotlib.colors.Colormap, optional
+        Colormap for plotting. Defaults to &#34;Blues&#34;.
+    &#34;&#34;&#34;
+    mindepth = np.min(self.topo)
+    maxdepth = np.max(self.topo)
+    h = ax.contourf(
+        self.lon,
+        self.lat,
+        self.topo,
+        np.arange(mindepth, maxdepth, 100),
+        cmap=cmap,
+        vmin=mindepth,
+        vmax=maxdepth + 500,
+        extend=&#34;both&#34;,
+        zorder=9,
+    )
+    for c in h.collections:
+        c.set_rasterized(True)
+        c.set_edgecolor(&#34;face&#34;)
+
+    ax.imshow(
+        self.smoothbumps,
+        extent=self.topo_extent,
+        cmap=self.kmap4,
+        alpha=0.5,
+        zorder=10,
+    )
+
+    # contour depth
+    h2 = ax.contour(
+        self.lon,
+        self.lat,
+        self.topo,
+        np.arange(mindepth, maxdepth, 500),
+        colors=&#34;0.1&#34;,
+        linewidths=0.25,
+        zorder=11,
+    )
+    for c in h2.collections:
+        c.set_rasterized(True)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gvpy" href="index.html">gvpy</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gvpy.maps.cartopy_scale_bar" href="#gvpy.maps.cartopy_scale_bar">cartopy_scale_bar</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gvpy.maps.HillShade" href="#gvpy.maps.HillShade">HillShade</a></code></h4>
+<ul class="">
+<li><code><a title="gvpy.maps.HillShade.plot_topo" href="#gvpy.maps.HillShade.plot_topo">plot_topo</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
